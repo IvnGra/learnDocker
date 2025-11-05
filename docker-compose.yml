@@ -1,4 +1,16 @@
+version: '3.9'
+
 services:
+  app:
+    build:
+      context: .
+      dockerfile: dockerfile
+    ports:
+      - 8000:8000
+    volumes:
+      - ./app:/app
+    
+
   db:
     image: mariadb
     environment:
@@ -15,4 +27,4 @@ services:
     image: ta23a/test
     depends_on:
       - db
-    command: tail -f /dev/null   # keep it running
+    command: tail -f /dev/null
